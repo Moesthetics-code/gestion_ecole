@@ -1,0 +1,39 @@
+global:
+  scrape_interval: 15s  # Intervalle de récupération des métriques
+  evaluation_interval: 15s  # Intervalle d'évaluation des règles
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "alertmanager:9093"  # Adresse de l'Alertmanager
+
+rule_files:
+  - "alert-rules.yml"
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: "node_exporter"  # Surveillance des ressources machines
+    static_configs:
+      - targets: ["node-exporter:9100"]
+
+  - job_name: "services"
+    static_configs:
+      - targets:
+          - "gateway:8080"
+          - "classes:8081"
+          - "cours:8082"
+          - "etudiants:8083"
+          - "professeurs:8084"
+          - "emplois:8085"
+
+  - job_name: "kubernetes"
+    kubernetes_sd_configs:
+      - role: pod
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        regex: ".*"
+        action: keep

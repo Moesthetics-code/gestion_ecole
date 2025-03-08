@@ -1,0 +1,35 @@
+auth_enabled: false  # Désactive l'authentification (pour un usage interne)
+
+server:
+  http_listen_port: 3100  # Port d'écoute de Loki
+
+ingester:
+  lifecycler:
+    ring:
+      kvstore:
+        store: inmemory  # Stockage en mémoire (peut être changé)
+      replication_factor: 1
+  chunk_idle_period: 5m  # Temps avant qu'un chunk soit enregistré
+  chunk_retain_period: 30s  # Temps de rétention en mémoire avant suppression
+
+schema_config:
+  configs:
+    - from: 2022-06-01
+      store: boltdb-shipper  # Type de stockage (peut être changé)
+      object_store: filesystem  # Stockage en local (peut être S3, GCS...)
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+
+storage_config:
+  boltdb_shipper:
+    active_index_directory: /var/loki/index
+    cache_location: /var/loki/cache
+    shared_store: filesystem  # Peut être S3, GCS...
+
+limits_config:
+  retention_period: 24h  # Garde les logs pendant 24h
+
+compactor:
+  retention_enabled: true

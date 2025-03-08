@@ -1,0 +1,83 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations-classes
+spec:
+  template:
+    spec:
+      containers:
+      - name: migrations
+        image: microservice_classes:latest
+        command: [ "/bin/sh", "-c", " if [ ! -d 'migrations' ]; then flask db init; fi && flask db migrate -m 'Initial migration' && flask db upgrade" ]
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://postgres:Redington@db_classes:5432/classes_db"
+      restartPolicy: Never
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations-cours
+spec:
+  template:
+    spec:
+      containers:
+      - name: migrations
+        image: microservice_cours:latest
+        command: [ "/bin/sh", "-c", " if [ ! -d 'migrations' ]; then flask db init; fi && flask db migrate -m 'Initial migration' && flask db upgrade" ]
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://postgres:Redington@db_cours:5432/cours_db"
+      restartPolicy: Never
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations-etudiants
+spec:
+  template:
+    spec:
+      containers:
+      - name: migrations
+        image: microservice_etudiants:latest
+        command: [ "/bin/sh", "-c", " if [ ! -d 'migrations' ]; then flask db init; fi && flask db migrate -m 'Initial migration' && flask db upgrade" ]
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://postgres:Redington@db_etudiants:5432/etudiants_db"
+      restartPolicy: Never
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations-professeurs
+spec:
+  template:
+    spec:
+      containers:
+      - name: migrations
+        image: microservice_professeurs:latest
+        command: [ "/bin/sh", "-c", " if [ ! -d 'migrations' ]; then flask db init; fi && flask db migrate -m 'Initial migration' && flask db upgrade" ]
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://postgres:Redington@db_professeurs:5432/professeurs_db"
+      restartPolicy: Never
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrations-emplois-du-temps
+spec:
+  template:
+    spec:
+      containers:
+      - name: migrations
+        image: microservice_emplois_du_temps:latest
+        command: [ "/bin/sh", "-c", " if [ ! -d 'migrations' ]; then flask db init; fi && flask db migrate -m 'Initial migration' && flask db upgrade" ]
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://postgres:Redington@db_emplois:5432/emplois_db"
+      restartPolicy: Never

@@ -1,0 +1,50 @@
+server:
+  http_listen_port: 3101
+  grpc_listen_port: 0
+
+positions:
+  filename: /var/log/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  # Surveillance des logs des pods Kubernetes
+  - job_name: kubernetes-pods
+    pipeline_stages:
+      - docker: {}
+    kubernetes_sd_configs:
+      - role: pod
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_name]
+        target_label: pod
+      - source_labels: [__meta_kubernetes_namespace]
+        target_label: namespace
+      - source_labels: [__meta_kubernetes_pod_container_name]
+        target_label: container
+      - action: replace
+        source_labels:
+          - __meta_kubernetes_pod_label_app
+        target_label: app
+
+  # Surveillance des fichiers de logs Python journaliers
+  - job_name: python-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: "python-app"
+          service: "my-python-app"
+          host: "${HOSTNAME}"
+          __path__: "/logs/log_*.log"
+
+    pipeline_stages:
+      - json:
+          expressions:
+            timestamp: timestamp
+            level: level
+            service: service
+            message: message
+      - timestamp:
+          source: timestamp
+          format: "2006-01-02 15:04:05"

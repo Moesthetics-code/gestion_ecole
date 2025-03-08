@@ -1,0 +1,322 @@
+services:
+  gateway:
+    build: ./services/gateway
+    container_name: gateway
+    ports:
+      - "5000:5000"
+    environment:
+      - CLASSES_SERVICE_URL=http://microservice_classes:5001
+      - COURS_SERVICE_URL=http://microservice_cours:5002
+      - ETUDIANTS_SERVICE_URL=http://microservice_etudiants:5003
+      - PROFESSEURS_SERVICE_URL=http://microservice_professeurs:5004
+      - EMPLOIS_DU_TEMPS_SERVICE_URL=http://microservice_emplois:5005
+      - DEBUG=True
+    depends_on:
+      - microservice_classes
+      - microservice_cours
+      - microservice_etudiants
+      - microservice_professeurs
+      - microservice_emplois
+    networks:
+      - school_network
+    volumes:
+      - ./services/gateway:/app
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:80"  # Redirection du port 80 (Nginx) vers 3000
+    depends_on:
+      - gateway
+    environment:
+      - REACT_APP_API_URL=http://gateway:5000  # React doit utiliser cette URL pour pointer vers Flask
+    networks:
+      - school_network
+    volumes:
+      - ./frontend/src:/app/src  # Montée des fichiers source du frontend
+
+  selenium:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444"
+    environment:
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+    networks:
+      - school_network
+    volumes:
+      - ./selenium:/app  # Optionnel, si vous avez des fichiers nécessaires pour Selenium
+
+  db_classes:
+    image: postgres:latest
+    container_name: db_classes
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Redington
+      POSTGRES_DB: classes_db
+    ports:
+      - "5433:5432"
+    networks:
+      - school_network
+    volumes:
+      - db_classes_data:/var/lib/postgresql/data  # Volume pour persistance des données
+
+  db_cours:
+    image: postgres:latest
+    container_name: db_cours
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Redington
+      POSTGRES_DB: cours_db
+    ports:
+      - "5434:5432"
+    networks:
+      - school_network
+    volumes:
+      - db_cours_data:/var/lib/postgresql/data  # Volume pour persistance des données
+
+  db_etudiants:
+    image: postgres:latest
+    container_name: db_etudiants
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Redington
+      POSTGRES_DB: etudiants_db
+    ports:
+      - "5435:5432"
+    networks:
+      - school_network
+    volumes:
+      - db_etudiants_data:/var/lib/postgresql/data  # Volume pour persistance des données
+
+  db_professeurs:
+    image: postgres:latest
+    container_name: db_professeurs
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Redington
+      POSTGRES_DB: professeurs_db
+    ports:
+      - "5436:5432"
+    networks:
+      - school_network
+    volumes:
+      - db_professeurs_data:/var/lib/postgresql/data  # Volume pour persistance des données
+
+  db_emplois:
+    image: postgres:latest
+    container_name: db_emplois
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Redington
+      POSTGRES_DB: emplois_db
+    ports:
+      - "5437:5432"
+    networks:
+      - school_network
+    volumes:
+      - db_emplois_data:/var/lib/postgresql/data  # Volume pour persistance des données
+
+  microservice_classes:
+    build: ./services/classes
+    container_name: microservice_classes
+    restart: always
+    depends_on:
+      - db_classes
+    ports:
+      - "5001:5001"
+    networks:
+      - school_network
+    volumes:
+      - ./services/classes:/app
+
+  microservice_cours:
+    build: ./services/cours
+    container_name: microservice_cours
+    restart: always
+    depends_on:
+      - db_cours
+      - microservice_classes
+    ports:
+      - "5002:5002"
+    networks:
+      - school_network
+    volumes:
+      - ./services/cours:/app
+
+  microservice_etudiants:
+    build: ./services/etudiants
+    container_name: microservice_etudiants
+    restart: always
+    depends_on:
+      - db_etudiants
+      - microservice_classes
+    ports:
+      - "5003:5003"
+    networks:
+      - school_network
+    volumes:
+      - ./services/etudiants:/app
+
+  microservice_professeurs:
+    build: ./services/professeurs
+    container_name: microservice_professeurs
+    restart: always
+    depends_on:
+      - db_professeurs
+    ports:
+      - "5004:5004"
+    networks:
+      - school_network
+    volumes:
+      - ./services/professeurs:/app
+
+  microservice_emplois:
+    build: ./services/emplois
+    container_name: microservice_emplois
+    restart: always
+    depends_on:
+      - db_emplois
+      - microservice_classes
+      - microservice_cours
+      - microservice_professeurs
+    ports:
+      - "5005:5005"
+    networks:
+      - school_network
+    volumes:
+      - ./services/emplois:/app
+
+    # Service de test pour le microservice_classes
+  test_classes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test_classes
+    restart: "no"
+    depends_on:
+      - microservice_classes
+    networks:
+      - school_network
+    environment:
+      - TEST_CLASSES_DB_URL=postgresql://postgres:Redington@db_classes:5437/classes_db
+    entrypoint: ["sh", "-c", "sleep 20 && pytest"]
+    command: pytest
+    volumes:
+      - ./services/classes:/app
+
+  # Service de test pour le microservice_cours
+  test_cours:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test_cours
+    restart: "no"
+    depends_on:
+      - microservice_cours
+    networks:
+      - school_network
+    environment:
+      - TEST_COURS_DB_URL=postgresql://postgres:Redington@db_cours:5434/cours_db
+    entrypoint: ["sh", "-c", "sleep 20 && pytest"]
+    command: pytest
+    volumes:
+      - ./services/cours:/app
+
+  # Service de test pour le microservice_etudiants
+  test_etudiants:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test_etudiants
+    restart: "no"
+    depends_on:
+      - microservice_etudiants
+    networks:
+      - school_network
+    environment:
+      - TEST_ETUDIANTS_DB_URL=postgresql://postgres:Redington@db_etudiants:5435/etudiants_db
+    entrypoint: ["sh", "-c", "sleep 20 && pytest"]
+    command: pytest
+    volumes:
+      - ./services/etudiants:/app
+
+  # Service de test pour le microservice_professeurs
+  test_professeurs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test_professeurs
+    restart: "no"
+    depends_on:
+      - microservice_professeurs
+    networks:
+      - school_network
+    environment:
+      - TEST_PROFESSEURS_DB_URL=postgresql://postgres:Redington@db_professeurs:5436/professeurs_db
+    entrypoint: ["sh", "-c", "sleep 20 && pytest"]
+    command: pytest
+    volumes:
+      - ./services/professeurs:/app
+
+  # Service de test pour le microservice_emplois
+  test_emplois:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test_emplois
+    restart: "no"
+    depends_on:
+      - microservice_emplois
+    networks:
+      - school_network
+    environment:
+      - TEST_EMPLOIS_DU_TEMPS_DB_URL=postgresql://postgres:Redington@db_emplois:5437/emplois_db
+    entrypoint: ["sh", "-c", "sleep 20 && pytest"]
+    command: pytest
+    volumes:
+      - ./services/emplois:/app
+  
+  # SonarQube - Analyse de code
+  sonarqube:
+    image: sonarqube:lts
+    container_name: sonarqube
+    restart: always
+    ports:
+      - "9000:9000"  # Interface web de SonarQube
+      - "9092:9092"  # Port de communication interne
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+    networks:
+      - school_network
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    restart: always
+
+networks:
+  school_network:
+    driver: bridge
+
+volumes:
+  jenkins_home:
+  db_classes_data:
+  db_cours_data:
+  db_etudiants_data:
+  db_professeurs_data:
+  db_emplois_data:
+  sonarqube_data:  # Volume pour SonarQube

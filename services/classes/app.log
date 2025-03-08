@@ -1,0 +1,29 @@
+2025-03-07 01:09:52 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:09:58 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:10:08 - INFO - app.py:93 - Classe ajoutée : dfghjk (Niveau: ertyui)
+2025-03-07 01:10:08 - ERROR - app.py:96 - Erreur lors de l'ajout de la classe dfghjk: (sqlite3.IntegrityError) UNIQUE constraint failed: classe.nom
+[SQL: INSERT INTO classe (nom, niveau) VALUES (?, ?)]
+[parameters: ('dfghjk', 'ertyui')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-07 01:10:13 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:10:19 - INFO - app.py:75 - Classe récupérée : dfghjk (ID: 1)
+2025-03-07 01:10:25 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:10:36 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:10:45 - INFO - app.py:75 - Classe récupérée : dfghjk (ID: 1)
+2025-03-07 01:30:51 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:31:02 - INFO - app.py:75 - Classe récupérée : dfghjk (ID: 1)
+2025-03-07 01:31:09 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:31:42 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:31:45 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:45:42 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:45:53 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:46:16 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:46:23 - INFO - app.py:93 - Classe ajoutée : nhhhhhhhhhh (Niveau: pppppppppp)
+2025-03-07 01:46:26 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:51:42 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:58:46 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 01:58:52 - INFO - app.py:93 - Classe ajoutée : mmmmmmmmmmmm (Niveau: ggggggggggg)
+2025-03-07 01:58:55 - INFO - app.py:111 - Classe supprimée : nhhhhhhhhhh (ID: 1)
+2025-03-07 01:59:19 - INFO - app.py:61 - Liste des classes récupérée
+2025-03-07 02:06:40 - INFO - app.py:75 - Classe récupérée : mmmmmmmmmmmm (ID: 2)
+2025-03-07 02:07:55 - WARNING - app.py:73 - Classe avec ID 1 non trouvée

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emplois-du-temps-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: emplois-du-temps
+  template:
+    metadata:
+      labels:
+        app: emplois-du-temps
+    spec:
+      containers:
+      - name: emplois-du-temps
+        image: user/emplois-du-temps:latest
+        ports:
+        - containerPort: 5005

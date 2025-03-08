@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-etudiants
+spec:
+  replicas: {{ .Values.replicas.etudiants }}  # Récupération du nombre de réplicas depuis values.yaml
+  selector:
+    matchLabels:
+      app: microservice-etudiants
+  template:
+    metadata:
+      labels:
+        app: microservice-etudiants
+    spec:
+      containers:
+        - name: microservice-etudiants
+          image: "{{ .Values.image.etudiants }}"  # Image récupérée dynamiquement depuis values.yaml
+          ports:
+            - containerPort: 5003  # Port du conteneur
+          env:
+            - name: DATABASE_URL
+              value: "{{ .Values.database.etudiants }}"  # Récupération de l'URL de la base de données
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-etudiants
+spec:
+  selector:
+    app: microservice-etudiants
+  ports:
+    - protocol: TCP
+      port: 5003  # Port exposé par le service
+      targetPort: 5003  # Port du conteneur

@@ -1,0 +1,38 @@
+groups:
+  - name: "resource_alerts"
+    rules:
+      - alert: "HighCPUUsage"
+        expr: avg(rate(process_cpu_seconds_total[5m])) > 0.8
+        for: 2m
+        labels:
+          severity: "critical"
+        annotations:
+          summary: "Utilisation élevée du CPU détectée"
+          description: "L'utilisation du CPU dépasse 80% pendant plus de 2 minutes."
+
+      - alert: "HighMemoryUsage"
+        expr: (node_memory_Active_bytes / node_memory_MemTotal_bytes) > 0.85
+        for: 2m
+        labels:
+          severity: "warning"
+        annotations:
+          summary: "Utilisation élevée de la mémoire"
+          description: "L'utilisation de la mémoire dépasse 85%."
+
+      - alert: "HttpErrorRate"
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: "critical"
+        annotations:
+          summary: "Taux d'erreur HTTP élevé"
+          description: "Plus de 5% des requêtes HTTP retournent une erreur 5xx."
+
+      - alert: "ServiceDown"
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: "critical"
+        annotations:
+          summary: "Un service est hors ligne"
+          description: "Le service {{ $labels.instance }} est injoignable."

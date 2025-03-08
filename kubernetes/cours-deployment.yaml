@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-cours
+spec:
+  replicas: {{ .Values.replicas.cours }}  # Récupération du nombre de réplicas depuis values.yaml
+  selector:
+    matchLabels:
+      app: microservice-cours
+  template:
+    metadata:
+      labels:
+        app: microservice-cours
+    spec:
+      containers:
+        - name: microservice-cours
+          image: "{{ .Values.image.cours }}"  # Récupération de l'image depuis values.yaml
+          ports:
+            - containerPort: 5002  # Port du conteneur
+          env:
+            - name: DATABASE_URL
+              value: "{{ .Values.database.cours }}"  # Récupération de l'URL de la base de données depuis values.yaml
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-cours
+spec:
+  selector:
+    app: microservice-cours
+  ports:
+    - protocol: TCP
+      port: 5002  # Port exposé par le service
+      targetPort: 5002  # Port du conteneur

@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: API de Gestion des Classes
+  version: 1.0.0
+  description: API permettant de gérer les classes d'un établissement
+
+servers:
+  - url: http://localhost:5001
+    description: Serveur local
+
+paths:
+  /classes:
+    get:
+      summary: Récupérer toutes les classes
+      responses:
+        "200":
+          description: Liste des classes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    nom:
+                      type: string
+                    niveau:
+                      type: string
+
+    post:
+      summary: Ajouter une nouvelle classe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                niveau:
+                  type: string
+      responses:
+        "201":
+          description: Classe ajoutée
+        "500":
+          description: Erreur lors de l'ajout
+
+  /classes/{id}:
+    get:
+      summary: Récupérer une classe spécifique
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Détails de la classe
+        "404":
+          description: Classe non trouvée
+
+    delete:
+      summary: Supprimer une classe
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Classe supprimée
+        "404":
+          description: Classe introuvable

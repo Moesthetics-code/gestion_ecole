@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-professeurs
+spec:
+  replicas: {{ .Values.replicas.professeurs }}  # Nombre de réplicas défini dans values.yaml
+  selector:
+    matchLabels:
+      app: microservice-professeurs
+  template:
+    metadata:
+      labels:
+        app: microservice-professeurs
+    spec:
+      containers:
+        - name: microservice-professeurs
+          image: "{{ .Values.image.professeurs }}"  # Image configurable depuis values.yaml
+          ports:
+            - containerPort: 5004  # Port du conteneur
+          env:
+            - name: DATABASE_URL
+              value: "{{ .Values.database.professeurs }}"  # URL de la base de données configurée dynamiquement
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-professeurs
+spec:
+  selector:
+    app: microservice-professeurs
+  ports:
+    - protocol: TCP
+      port: 5004  # Port exposé par le service
+      targetPort: 5004  # Port du conteneur

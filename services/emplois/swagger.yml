@@ -1,0 +1,161 @@
+openapi: 3.0.0
+info:
+  title: API Emplois du Temps
+  description: API de gestion des emplois du temps des classes, cours et professeurs.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5005
+    description: Serveur local
+
+paths:
+  /emplois_du_temps:
+    post:
+      summary: Ajouter un emploi du temps
+      description: Crée un nouvel emploi du temps après validation des services associés.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - classe_id
+                - cours_id
+                - professeur_id
+                - jour
+                - heure_debut
+                - heure_fin
+              properties:
+                classe_id:
+                  type: integer
+                  example: 1
+                cours_id:
+                  type: integer
+                  example: 2
+                professeur_id:
+                  type: integer
+                  example: 3
+                jour:
+                  type: string
+                  example: "Lundi"
+                heure_debut:
+                  type: string
+                  format: time
+                  example: "08:00"
+                heure_fin:
+                  type: string
+                  format: time
+                  example: "10:00"
+      responses:
+        "201":
+          description: Emploi du temps ajouté avec succès
+        "400":
+          description: Données invalides
+        "404":
+          description: Classe, cours ou professeur introuvable
+        "409":
+          description: Conflit d'emploi du temps
+        "500":
+          description: Erreur interne du serveur
+
+    get:
+      summary: Récupérer tous les emplois du temps
+      description: Retourne la liste complète des emplois du temps avec les détails des classes, cours et professeurs.
+      responses:
+        "200":
+          description: Liste des emplois du temps récupérée avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    classe:
+                      type: string
+                      example: "Terminale A"
+                    cours:
+                      type: string
+                      example: "Mathématiques"
+                    professeur:
+                      type: string
+                      example: "M. Dupont"
+                    jour:
+                      type: string
+                      example: "Lundi"
+                    heure_debut:
+                      type: string
+                      format: time
+                      example: "08:00"
+                    heure_fin:
+                      type: string
+                      format: time
+                      example: "10:00"
+        "500":
+          description: Erreur interne du serveur
+
+  /emplois_du_temps/{id}:
+    put:
+      summary: Mettre à jour un emploi du temps
+      description: Modifie un emploi du temps existant en fonction de l'ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'emploi du temps à modifier
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                classe_id:
+                  type: integer
+                cours_id:
+                  type: integer
+                professeur_id:
+                  type: integer
+                jour:
+                  type: string
+                  example: "Mardi"
+                heure_debut:
+                  type: string
+                  format: time
+                  example: "09:00"
+                heure_fin:
+                  type: string
+                  format: time
+                  example: "11:00"
+      responses:
+        "200":
+          description: Emploi du temps mis à jour avec succès
+        "400":
+          description: Données invalides
+        "404":
+          description: Emploi du temps introuvable
+        "500":
+          description: Erreur interne du serveur
+
+    delete:
+      summary: Supprimer un emploi du temps
+      description: Supprime un emploi du temps en fonction de l'ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'emploi du temps à supprimer
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Emploi du temps supprimé avec succès
+        "404":
+          description: Emploi du temps introuvable
+        "500":
+          description: Erreur interne du serveur

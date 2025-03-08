@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cours-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cours
+  template:
+    metadata:
+      labels:
+        app: cours
+    spec:
+      containers:
+      - name: cours
+        image: user/cours:latest
+        ports:
+        - containerPort: 5002

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-emplois-du-temps
+spec:
+  replicas: {{ .Values.replicas.emplois_du_temps }}  # Récupération du nombre de réplicas depuis values.yaml
+  selector:
+    matchLabels:
+      app: microservice-emplois-du-temps
+  template:
+    metadata:
+      labels:
+        app: microservice-emplois-du-temps
+    spec:
+      containers:
+        - name: microservice-emplois-du-temps
+          image: "{{ .Values.image.emplois_du_temps }}"  # Récupération de l'image depuis values.yaml
+          ports:
+            - containerPort: 5005  # Port du conteneur
+          env:
+            - name: DATABASE_URL
+              value: "{{ .Values.database.emplois_du_temps }}"  # Récupération de l'URL de la base de données depuis values.yaml
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-emplois-du-temps
+spec:
+  selector:
+    app: microservice-emplois-du-temps
+  ports:
+    - protocol: TCP
+      port: 5005  # Port exposé par le service
+      targetPort: 5005  # Port du conteneur

@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: API de Gestion des Cours
+  description: API permettant de gérer les cours et leurs classes associées.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5002
+    description: Serveur local
+
+paths:
+  /cours:
+    get:
+      summary: Récupérer tous les cours
+      description: Retourne la liste de tous les cours enregistrés dans la base de données.
+      responses:
+        200:
+          description: Liste des cours récupérée avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    nom:
+                      type: string
+                    classe_id:
+                      type: integer
+        500:
+          description: Erreur interne du serveur
+
+    post:
+      summary: Ajouter un nouveau cours
+      description: Ajoute un nouveau cours après vérification de l'existence de la classe.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                classe_id:
+                  type: integer
+      responses:
+        201:
+          description: Cours ajouté avec succès
+        400:
+          description: Classe introuvable
+        500:
+          description: Erreur lors de l'ajout du cours
+
+  /cours/{id}:
+    put:
+      summary: Mettre à jour un cours
+      description: Modifie les informations d'un cours existant.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                classe_id:
+                  type: integer
+      responses:
+        200:
+          description: Cours mis à jour avec succès
+        404:
+          description: Cours introuvable
+        500:
+          description: Erreur interne du serveur
+
+    delete:
+      summary: Supprimer un cours
+      description: Supprime un cours de la base de données.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Cours supprimé avec succès
+        404:
+          description: Cours introuvable
+        500:
+          description: Erreur interne du serveur

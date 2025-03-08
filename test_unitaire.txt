@@ -1,0 +1,96 @@
+### ✅ **Lancer les tests dans le terminal Windows**
+
+#### **1️⃣ Installer les dépendances nécessaires**
+Avant d'exécuter les tests, assure-toi d'avoir installé **pytest** et **Flask-Testing**. Ouvre un terminal (`cmd` ou `PowerShell`) et exécute :
+
+```bash
+pip install -r requirements.txt
+```
+Si `requirements.txt` ne contient pas `pytest` et `flask-testing`, installe-les manuellement :
+```bash
+pip install pytest flask-testing
+```
+
+---
+
+#### **2️⃣ Se placer dans le dossier du projet**
+Dans ton terminal, navigue vers le dossier contenant `test_etudiants.py` :
+
+```bash
+cd chemin\vers\etudiants
+```
+⚠️ **Exemple Windows :**
+Si ton projet est dans `C:\Users\MonNom\Documents\projet\etudiants`, fais :
+```bash
+cd C:\Users\MonNom\Documents\projet\etudiants
+```
+
+---
+
+#### **3️⃣ Lancer les tests avec pytest**
+Une fois dans le bon dossier, exécute :
+
+```bash
+pytest nom_du_fichier_de_test.py
+```
+nom_du_fichier_de_test.py est facultatif si le nom du fichier commence par test_ ou se termine par _test
+
+Ou, pour voir plus de détails sur chaque test :
+
+```bash
+pytest -v nom_du_fichier_de_test.py
+```
+
+---
+
+#### **4️⃣ Si tu veux exécuter un test spécifique**
+Pour exécuter uniquement `test_get_etudiants`, fais :
+```bash
+pytest -v test_etudiants.py::TestEtudiantApp::test_get_etudiants
+```
+
+---
+
+#### **5️⃣ Si Flask est installé dans un environnement virtuel**
+Si tu utilises un **environnement virtuel** (`venv` ou `virtualenv`), assure-toi d'abord d'activer ton environnement :
+
+```bash
+# Windows (cmd)
+venv\Scripts\activate
+
+# Windows (PowerShell)
+venv\Scripts\Activate.ps1
+```
+Puis, exécute `pytest` normalement.
+
+---
+
+### 🚀 **Résultat attendu**
+Si les tests passent, tu verras quelque chose comme :
+```
+============================== test session starts ==============================
+collected 5 items
+
+test_etudiants.py::TestEtudiantApp::test_get_etudiants PASSED ✅
+test_etudiants.py::TestEtudiantApp::test_add_etudiant PASSED ✅
+test_etudiants.py::TestEtudiantApp::test_add_etudiant_missing_data PASSED ✅
+test_etudiants.py::TestEtudiantApp::test_add_etudiant_invalid_data PASSED ✅
+test_etudiants.py::TestEtudiantApp::test_add_etudiant_database_error PASSED ✅
+
+============================== 5 passed in 2.34s ==============================
+```
+
+Si un test échoue, **pytest** affichera une erreur indiquant **où et pourquoi** il a échoué.
+
+---
+
+### 🎯 **Conclusion**
+- Installe les dépendances ✅
+- Place-toi dans le bon dossier ✅
+- Lance `pytest` ✅  
+- Vérifie les résultats ✅  
+
+Si tu as une erreur, envoie-moi le message d'erreur et je t'aiderai ! 🚀🔥
+
+
+python -c "from services.logging_config import setup_logging; print('Import réussi !')"

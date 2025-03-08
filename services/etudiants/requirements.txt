@@ -1,0 +1,14 @@
+Flask
+Flask-SQLAlchemy
+psycopg2-binary
+requests
+flask-swagger-ui
+flask-testing
+pytest 
+mock
+unittest2
+flask-inertia 
+flask-cors
+flask_migrate
+requests_mock
+

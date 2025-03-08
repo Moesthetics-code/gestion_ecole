@@ -1,0 +1,97 @@
+image:
+  gateway: "docker.io/tonutilisateur/gateway:latest"
+  classes: "monrepo/microservice-classes:latest"
+  cours: "monrepo/microservice-cours:latest"
+  etudiants: "monrepo/microservice-etudiants:latest"
+  professeurs: "monrepo/microservice-professeurs:latest"
+  emplois_du_temps: "monrepo/microservice-emplois:latest"
+  frontend: "monrepo/school-frontend:latest"
+  grafana: "grafana/grafana:latest"
+  loki: "grafana/loki:latest"
+  prometheus: "prom/prometheus:latest"
+  promtail: "grafana/promtail:latest"
+  postgres: "postgres:latest"
+
+database:
+  classes: "postgresql://postgres:Redington@postgres:5432/classes_db"
+  cours: "postgresql://postgres:Redington@postgres:5432/cours_db"
+  etudiants: "postgresql://postgres:Redington@postgres:5432/etudiants_db"
+  professeurs: "postgresql://postgres:Redington@postgres:5432/professeurs_db"
+  emplois_du_temps: "postgresql://postgres:Redington@postgres:5432/emplois_db"
+
+replicas:
+  gateway: 2
+  classes: 1
+  cours: 1
+  etudiants: 1
+  professeurs: 1
+  emplois_du_temps: 1
+  grafana: 1
+  loki: 1
+  prometheus: 1
+  promtail: 1
+  postgres: 1
+
+services:
+  classes: "http://microservice-classes:5001"
+  cours: "http://microservice-cours:5002"
+  etudiants: "http://microservice-etudiants:5003"
+  professeurs: "http://microservice-professeurs:5004"
+  emplois_du_temps: "http://microservice-emplois:5005"
+
+service:
+  type: LoadBalancer # Modifier en ClusterIP si nécessaire
+
+grafana:
+  adminPassword: "admin"
+  resources:
+    requests:
+      memory: "500Mi"
+      cpu: "500m"
+    limits:
+      memory: "1Gi"
+      cpu: "1"
+
+loki:
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+prometheus:
+  resources:
+    requests:
+      memory: "500Mi"
+      cpu: "500m"
+    limits:
+      memory: "1Gi"
+      cpu: "1"
+
+promtail:
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+postgres:
+  pvc:
+    storage: "1Gi"
+
+  env:
+    POSTGRES_USER: "postgres"
+    POSTGRES_PASSWORD: "Redington"
+    POSTGRES_DB: "school_db"
+
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: professeurs-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: professeurs
+  template:
+    metadata:
+      labels:
+        app: professeurs
+    spec:
+      containers:
+      - name: professeurs
+        image: user/professeurs:latest
+        ports:
+        - containerPort: 5004

@@ -1,0 +1,72 @@
+school_management/
+│── frontend/
+│── Dockerfile/
+├   ├── public/
+│   ├── index.html
+├   ├── src/
+│   ├── styles/
+│   ├── pages/
+│   ├── App.js
+│   ├── index.js
+│   ├── .env
+│   ├── package.json
+│   ├── Dockerfile
+│   ├── .gitignore
+│── Jenkinsfile
+│── docker-compose.yml
+│── kubernetes/
+│   │── alert-rules.yaml
+│   │── alertmanager-config.yaml
+│   │── classes-deployment.yaml
+│   │── cours-deployment.yaml
+│   │── emplois-deployment.yaml
+│   │── etudiants-deployment.yaml
+│   ├── gateway-deployment.yaml
+│   ├── grafana-dashboard-configmap.yaml
+│   ├── grafana-deployment.yaml
+│   ├── grafana-pvc.yaml
+│   ├── loki-config.yaml       
+│   ├── loki-deployment.yaml       # Déploiement pour Loki (stockage des logs)
+│   │── migrations-job.yaml
+│   ├── postgres-deployment.yaml
+│   │── professeurs-deployment.yaml
+│   ├── prometheus-config.yaml
+│   ├── prometheus-deployment.yaml
+│   ├── promtail-config.yaml   # Déploiement pour Promtail (collecte des logs)
+│   ├── promtail-deployment.yaml   # Déploiement pour Promtail (collecte des logs)
+│── services/
+│   ├── tests/
+│   │── test_classe_form.py
+│   │── test_cours_form.py
+│   │── test_etudiant_form.py
+│   ├── logging_config.py           # Configuration centralisée des logs
+│   ├── gateway/
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   ├── config.py
+│   ├── classes/
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   ├── test_classes.py
+│   ├── cours/
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   ├── test_cours.py
+│   ├── etudiants/
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   ├── test_etudiants.py
+│   ├── professeurs/
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   ├── test_professeurs.py
+│   ├── emplois/
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   ├── test_emplois_du_temps.py

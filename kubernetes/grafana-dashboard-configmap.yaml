@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-config
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "true"
+data:
+  dashboard.json: |
+    {
+      "id": null,
+      "title": "School Management Monitoring",
+      "description": "Dashboard for monitoring CPU, RAM, and latency metrics",
+      "schemaVersion": 16,
+      "version": 1,
+      "refresh": "5s",
+      "panels": [
+        {
+          "title": "CPU Usage",
+          "type": "graph",
+          "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "rate(container_cpu_usage_seconds_total{namespace='school-namespace'}[5m]) * 100",
+              "legendFormat": "{{pod}}",
+              "interval": ""
+            }
+          ],
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": "CPU Usage (%)",
+              "logBase": 1
+            },
+            {
+              "format": "short"
+            }
+          ]
+        },
+        {
+          "title": "Memory Usage",
+          "type": "graph",
+          "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "container_memory_usage_bytes{namespace='school-namespace'}",
+              "legendFormat": "{{pod}}",
+              "interval": ""
+            }
+          ],
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": "Memory Usage",
+              "logBase": 1
+            },
+            {
+              "format": "short"
+            }
+          ]
+        },
+        {
+          "title": "Request Latency",
+          "type": "graph",
+          "gridPos": { "x": 0, "y": 8, "w": 24, "h": 8 },
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{namespace='school-namespace'}[5m])) by (le, pod))",
+              "legendFormat": "{{pod}}",
+              "interval": ""
+            }
+          ],
+          "yaxes": [
+            {
+              "format": "s",
+              "label": "Latency (s)",
+              "logBase": 1
+            },
+            {
+              "format": "short"
+            }
+          ]
+        }
+      ],
+      "time": {
+        "from": "now-5m",
+        "to": "now"
+      },
+      "timepicker": {
+        "refresh_intervals": ["5s", "10s", "30s", "1m", "5m", "15m"]
+      },
+      "templating": {
+        "list": []
+      },
+      "annotations": {
+        "list": []
+      },
+      "schemaVersion": 16,
+      "style": "dark",
+      "timezone": "browser"
+    }

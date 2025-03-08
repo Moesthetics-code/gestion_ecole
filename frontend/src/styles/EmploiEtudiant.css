@@ -1,0 +1,23 @@
+.emploi-etudiant {
+    padding: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
+  strong {
+    color: #4CAF50;
+  }
+  

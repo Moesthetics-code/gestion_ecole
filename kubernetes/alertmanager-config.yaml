@@ -1,0 +1,22 @@
+route:
+  receiver: "slack-alerts"
+  group_by: ["job"]
+  repeat_interval: 30m
+  group_wait: 10s
+  group_interval: 5m
+
+receivers:
+  - name: "slack-alerts"
+    slack_configs:
+      - channel: "#monitoring-alerts"
+        send_resolved: true
+        api_url: "https://hooks.slack.com/services/XXXXX/YYYYY/ZZZZZ"
+
+  - name: "email-alerts"
+    email_configs:
+      - to: "admin@your-company.com"
+        from: "alertmanager@your-company.com"
+        smarthost: "smtp.your-company.com:587"
+        auth_username: "alertmanager"
+        auth_password: "your-email-password"
+        send_resolved: true

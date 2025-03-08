@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: classes-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: classes
+  template:
+    metadata:
+      labels:
+        app: classes
+    spec:
+      containers:
+        - name: classes
+          image: user/classes:latest
+          ports:
+            - containerPort: 5001

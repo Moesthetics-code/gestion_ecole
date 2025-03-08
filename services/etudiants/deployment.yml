@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etudiants-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: etudiants
+  template:
+    metadata:
+      labels:
+        app: etudiants
+    spec:
+      containers:
+      - name: etudiants
+        image: user/etudiants:latest
+        ports:
+        - containerPort: 5003

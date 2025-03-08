@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: API de Gestion des Étudiants
+  version: 1.0.0
+  description: API permettant de gérer les étudiants d'un établissement
+
+servers:
+- url: http://localhost:5003
+  description: Serveur local
+
+paths:
+  /etudiants:
+    get:
+      summary: Récupérer tous les étudiants
+      responses:
+        "200":
+          description: Liste des étudiants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    nom:
+                      type: string
+                    classe_id:
+                      type: integer
+
+    post:
+      summary: Ajouter un nouvel étudiant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                classe_id:
+                  type: integer
+      responses:
+        "201":
+          description: Étudiant ajouté
+        "500":
+          description: Erreur lors de l'ajout

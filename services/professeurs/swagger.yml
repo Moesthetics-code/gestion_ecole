@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: API de Gestion des Professeurs
+  version: 1.0.0
+  description: API permettant de gérer les professeurs et d'assigner des cours
+
+servers:
+  - url: http://localhost:5004
+    description: Serveur local
+
+paths:
+  /professeurs:
+    post:
+      summary: Ajouter un professeur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nom:
+                  type: string
+                specialite:
+                  type: string
+      responses:
+        "201":
+          description: Professeur ajouté
+        "500":
+          description: Erreur interne
+
+  /professeurs/{prof_id}/cours/{cours_id}:
+    post:
+      summary: Assigner un cours à un professeur
+      parameters:
+        - name: prof_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: cours_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Cours assigné
+        "404":
+          description: Professeur ou cours introuvable
+        "500":
+          description: Erreur interne
+
+  /professeurs/{prof_id}/cours:
+    get:
+      summary: Récupérer les cours d'un professeur
+      parameters:
+        - name: prof_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Liste des cours du professeur
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  professeur:
+                    type: string
+                  cours:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        nom:
+                          type: string
+        "404":
+          description: Professeur introuvable
+        "500":
+          description: Erreur interne

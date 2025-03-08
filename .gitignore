@@ -1,0 +1,7 @@
+venv/
+services/etudiants/venv/
+services/classes/venv/
+services/cours/venv/
+services/emplois/venv/
+services/professeurs/venv/
+.env
