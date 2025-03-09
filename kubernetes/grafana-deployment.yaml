@@ -18,7 +18,7 @@ spec:
       - name: grafana
         image: {{ .Values.image.grafana | default "grafana/grafana:latest" }}
         ports:
-        - containerPort: 3000
+        - containerPort: 3000  # Grafana écoute toujours sur 3000 en interne
         env:
         - name: GF_SECURITY_ADMIN_PASSWORD
           value: {{ .Values.grafana.adminPassword | default "admin" }}  
@@ -43,7 +43,7 @@ spec:
     app: grafana
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 32000
+      port: 4000      # Port externe exposé
+      targetPort: 3000 # Port interne du conteneur Grafana
+      nodePort: 32000  # Si type NodePort est utilisé
   type: {{ .Values.service.type | default "LoadBalancer" }}

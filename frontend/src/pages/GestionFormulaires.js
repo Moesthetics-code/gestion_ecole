@@ -2,7 +2,7 @@ import React from "react";
 import CoursForm from "./CoursForm";
 import ClasseForm from "./ClasseForm";
 import EmploiDuTempsForm from "./EmploiDuTempsForm";
-//import "../styles/GestionFormulaires.css";
+import "../styles/GestionFormulaires.css";
 
 const GestionFormulaires = () => {
   return (

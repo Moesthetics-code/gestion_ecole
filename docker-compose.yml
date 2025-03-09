@@ -36,18 +36,6 @@ services:
     volumes:
       - ./frontend/src:/app/src  # Montée des fichiers source du frontend
 
-  selenium:
-    image: selenium/standalone-chrome:latest
-    ports:
-      - "4444:4444"
-    environment:
-      - SCREEN_WIDTH=1920
-      - SCREEN_HEIGHT=1080
-    networks:
-      - school_network
-    volumes:
-      - ./services/tests:/app/tests  # Monté depuis services/tests vers /app/tests dans le conteneur
-
   db_classes:
     image: postgres:latest
     container_name: db_classes
@@ -308,6 +296,43 @@ services:
       - jenkins_home:/var/jenkins_home
     restart: always
 
+  nexus:
+    image: sonatype/nexus3
+    container_name: nexus
+    restart: always
+    ports:
+      - "8082:8081"  # Port d'accès à l'interface web de Nexus
+    networks:
+      - school_network
+    volumes:
+      - nexus-data:/nexus-data  # Volume pour la persistance des données
+
+  selenium:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444"
+    environment:
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+    networks:
+      - school_network
+    volumes:
+      - ./services/tests:/app/tests  # Monté depuis services/tests vers /app/tests dans le conteneur
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - "4000:3000"  # Expose Grafana sur le port 4000 au lieu de 3000
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin  # Nom d'utilisateur par défaut
+      - GF_SECURITY_ADMIN_PASSWORD=admin  # Mot de passe par défaut
+    networks:
+      - school_network
+    volumes:
+      - grafana_data:/var/lib/grafana  # Persistance des données
+
 networks:
   school_network:
     driver: bridge
@@ -320,3 +345,5 @@ volumes:
   db_professeurs_data:
   db_emplois_data:
   sonarqube_data:  # Volume pour SonarQube
+  nexus-data:
+  grafana_data:

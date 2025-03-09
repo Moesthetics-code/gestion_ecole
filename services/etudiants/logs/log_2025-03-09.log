@@ -1,0 +1,35 @@
+{"timestamp": "2025-03-09 01:25:15", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://172.18.0.11:5003"}
+{"timestamp": "2025-03-09 01:25:15", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 01:40:08", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://172.19.0.12:5003"}
+{"timestamp": "2025-03-09 01:40:08", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 01:40:31", "level": "INFO", "service": "EtudiantsService", "message": "2 étudiants récupérés avec succès"}
+{"timestamp": "2025-03-09 01:40:31", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:40:31] "GET /etudiants HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 01:41:39", "level": "INFO", "service": "EtudiantsService", "message": "2 étudiants récupérés avec succès"}
+{"timestamp": "2025-03-09 01:41:39", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:41:39] "GET /etudiants HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 01:41:44", "level": "INFO", "service": "EtudiantsService", "message": "Étudiant dddddddddd ajouté avec succès (ID: 3)"}
+{"timestamp": "2025-03-09 01:41:44", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:41:44] "[35m[1mPOST /etudiants HTTP/1.1[0m" 201 -"}
+{"timestamp": "2025-03-09 01:41:44", "level": "INFO", "service": "EtudiantsService", "message": "3 étudiants récupérés avec succès"}
+{"timestamp": "2025-03-09 01:41:44", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:41:44] "GET /etudiants HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 04:05:28", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://172.18.0.15:5003"}
+{"timestamp": "2025-03-09 04:05:28", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 06:23:08", "level": "INFO", "service": "EtudiantsService", "message": "0 étudiants récupérés avec succès"}
+{"timestamp": "2025-03-09 06:23:08", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:23:08] "GET /etudiants HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:53:17", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://172.18.0.13:5003"}
+{"timestamp": "2025-03-09 06:53:17", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 12:48:53", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://172.18.0.15:5003"}
+{"timestamp": "2025-03-09 12:48:53", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}

@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, send_file
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import os
-from services.logging_config import setup_logging
+from logging_config import setup_logging
 import logging
 from flask_migrate import Migrate
 from flask_swagger_ui import get_swaggerui_blueprint

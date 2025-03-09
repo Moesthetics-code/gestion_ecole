@@ -6,3 +6,54 @@
 {"timestamp": "2025-03-09 01:26:28", "level": "WARNING", "service": "CoursService", "message": "Classe introuvable pour ID 99"}
 {"timestamp": "2025-03-09 01:26:28", "level": "INFO", "service": "CoursService", "message": "Cours mis � jour : Math�matiques Avanc�es"}
 {"timestamp": "2025-03-09 01:26:28", "level": "INFO", "service": "CoursService", "message": "Cours supprim� : Math�matiques"}
+{"timestamp": "2025-03-09 01:26:16", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://172.18.0.13:5002"}
+{"timestamp": "2025-03-09 01:26:16", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 01:40:08", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://172.19.0.13:5002"}
+{"timestamp": "2025-03-09 01:40:08", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 01:40:54", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 01:40:54", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:40:54] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 01:41:30", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 01:41:30", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:41:30] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 04:05:28", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://172.18.0.14:5002"}
+{"timestamp": "2025-03-09 04:05:28", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 06:22:41", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 06:22:42", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:22:42] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:23:27", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 06:23:27", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:23:27] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:23:35", "level": "INFO", "service": "CoursService", "message": "Cours ajouté : hnnnnnnnn (Classe ID: 1)"}
+{"timestamp": "2025-03-09 06:23:35", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:23:35] "[35m[1mPOST /cours HTTP/1.1[0m" 201 -"}
+{"timestamp": "2025-03-09 06:23:40", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 06:23:40", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:23:40] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:53:17", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://172.18.0.12:5002"}
+{"timestamp": "2025-03-09 06:53:17", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 12:48:54", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://172.18.0.16:5002"}
+{"timestamp": "2025-03-09 12:48:54", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 12:49:40", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 12:49:40", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 12:49:40] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 12:50:40", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 12:50:40", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 12:50:40] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 12:51:02", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 12:51:02", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 12:51:02] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 12:54:16", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 12:54:16", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 12:54:16] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 12:54:18", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 12:54:18", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 12:54:18] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 12:54:25", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 12:54:25", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 12:54:25] "GET /cours HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 13:51:47", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 13:51:47", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 13:51:47] "GET /cours HTTP/1.1" 200 -"}

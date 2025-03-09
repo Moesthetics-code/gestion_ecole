@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from services.logging_config import setup_logging
+from logging_config import setup_logging
 import logging
 import requests
 from flask_migrate import Migrate

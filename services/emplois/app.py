@@ -3,7 +3,7 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import logging
-from services.logging_config import setup_logging
+from logging_config import setup_logging
 from datetime import datetime
 from sqlalchemy import and_
 from flask_swagger_ui import get_swaggerui_blueprint
@@ -19,8 +19,8 @@ setup_logging()
 logger = logging.getLogger("EmploisDuTempsService")
 
 # Configuration de la base de données
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Redington@db_emplois:5432/emplois_db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Redington@db_emplois:5432/emplois_db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

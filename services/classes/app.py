@@ -1,4 +1,4 @@
-from services.logging_config import setup_logging
+from logging_config import setup_logging
 import logging
 import os
 from flask import Flask, request, jsonify, send_file

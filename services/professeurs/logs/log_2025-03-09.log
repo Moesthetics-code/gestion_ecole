@@ -1,0 +1,41 @@
+{"timestamp": "2025-03-09 01:23:54", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://172.18.0.9:5004"}
+{"timestamp": "2025-03-09 01:23:54", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 01:40:05", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://172.19.0.10:5004"}
+{"timestamp": "2025-03-09 01:40:05", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 01:40:35", "level": "INFO", "service": "ProfesseursService", "message": "Liste des professeurs récupérée avec succès"}
+{"timestamp": "2025-03-09 01:40:35", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:40:35] "GET /professeurs HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 01:41:23", "level": "INFO", "service": "ProfesseursService", "message": "Professeur ajouté : sssssssssss (ID: 3)"}
+{"timestamp": "2025-03-09 01:41:23", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:41:23] "[35m[1mPOST /professeurs HTTP/1.1[0m" 201 -"}
+{"timestamp": "2025-03-09 01:41:23", "level": "INFO", "service": "ProfesseursService", "message": "Liste des professeurs récupérée avec succès"}
+{"timestamp": "2025-03-09 01:41:23", "level": "INFO", "service": "werkzeug", "message": "172.19.0.19 - - [09/Mar/2025 01:41:23] "GET /professeurs HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 04:05:28", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://172.18.0.10:5004"}
+{"timestamp": "2025-03-09 04:05:28", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 06:22:44", "level": "INFO", "service": "ProfesseursService", "message": "Liste des professeurs récupérée avec succès"}
+{"timestamp": "2025-03-09 06:22:44", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:22:44] "GET /professeurs HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:23:40", "level": "INFO", "service": "ProfesseursService", "message": "Liste des professeurs récupérée avec succès"}
+{"timestamp": "2025-03-09 06:23:40", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:23:40] "GET /professeurs HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:23:57", "level": "INFO", "service": "ProfesseursService", "message": "Liste des professeurs récupérée avec succès"}
+{"timestamp": "2025-03-09 06:23:57", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:23:57] "GET /professeurs HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:24:06", "level": "INFO", "service": "ProfesseursService", "message": "Professeur ajouté : hhhhh (ID: 1)"}
+{"timestamp": "2025-03-09 06:24:06", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:24:06] "[35m[1mPOST /professeurs HTTP/1.1[0m" 201 -"}
+{"timestamp": "2025-03-09 06:24:06", "level": "INFO", "service": "ProfesseursService", "message": "Liste des professeurs récupérée avec succès"}
+{"timestamp": "2025-03-09 06:24:06", "level": "INFO", "service": "werkzeug", "message": "172.18.0.20 - - [09/Mar/2025 06:24:06] "GET /professeurs HTTP/1.1" 200 -"}
+{"timestamp": "2025-03-09 06:53:17", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://172.18.0.11:5004"}
+{"timestamp": "2025-03-09 06:53:17", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}
+{"timestamp": "2025-03-09 12:48:52", "level": "INFO", "service": "werkzeug", "message": "[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://172.18.0.11:5004"}
+{"timestamp": "2025-03-09 12:48:52", "level": "INFO", "service": "werkzeug", "message": "[33mPress CTRL+C to quit[0m"}

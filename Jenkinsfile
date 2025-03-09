@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         GIT_REPO = "https://github.com/Moesthetics-code/gestion_ecole.git"
-        DOCKER_REGISTRY = "https://hub.docker.com/u/moesthetic"
+        DOCKER_REGISTRY = "hub.docker.com"
         NEXUS_URL = "http://nexus.your-company.com/repository/school_management/"
-        SONARQUBE_URL = "http://sonarqube.your-company.com"
-        SONAR_TOKEN = credentials('sonarqube-token')
+        SONARQUBE_URL = "http://localhost:9000"
+        SONAR_TOKEN = credentials('jenkins-sonar-token')
         K8S_NAMESPACE = "school-namespace"
         HELM_RELEASE = "school-release"
     }
@@ -216,7 +216,7 @@ pipeline {
                             echo " Grafana unreachable"
                         fi
 
-                        if curl -sSf http://prometheus-service/api/v1/query?query=up; then
+                        if curl -sSf http://prometheus/api/v1/query?query=up; then
                             echo " Prometheus est disponible"
                         else
                             echo " Prometheus unreachable"
@@ -252,6 +252,30 @@ pipeline {
                         curl -X POST -H "Content-Type: application/json" \
                             -d @logs/python-logs-${date}.txt \
                             http://loki:3100/loki/api/v1/push
+                    """
+
+                    // Ajout de la configuration de Loki comme Data Source dans Grafana
+                    sh """
+                        echo "🚀 Configuration de Grafana avec Loki"
+                        curl -X POST http://grafana:4000/api/datasources \
+                        -H "Content-Type: application/json" \
+                        -H "Authorization: Bearer YOUR_GRAFANA_API_KEY" \
+                        -d '{
+                            "name": "Loki",
+                            "type": "loki",
+                            "url": "http://loki:3100",
+                            "access": "proxy",
+                            "isDefault": true
+                        }'
+                    """
+
+                    // Importation automatique d'un Dashboard pour visualiser les logs Loki
+                    sh """
+                        echo "🚀 Importation du Dashboard Loki dans Grafana"
+                        curl -X POST http://grafana:3000/api/dashboards/db \
+                        -H "Content-Type: application/json" \
+                        -H "Authorization: Bearer YOUR_GRAFANA_API_KEY" \
+                        -d '@./kubernetes/grafana-dashboards/loki-dashboard.json'
                     """
                 }
             }

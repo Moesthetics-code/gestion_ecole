@@ -12,7 +12,7 @@ def driver():
         command_executor='http://selenium:4444/wd/hub',  # URL de Selenium dans le conteneur Docker
         desired_capabilities={'browserName': 'chrome'}
     )
-    driver.get("http://localhost:5000/etudiant-form")  # Remplacez par l'URL correcte de votre application dans le conteneur
+    driver.get("http://localhost:3000/etudiant-form")  # Remplacez par l'URL correcte de votre application dans le conteneur
     yield driver
     driver.quit()
 
