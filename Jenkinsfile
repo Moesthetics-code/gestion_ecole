@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     environment {
-        GIT_REPO = "https://github.com/Moesthetics-code/school_management.git"
-        DOCKER_REGISTRY = "your-docker-registry"
+        GIT_REPO = "https://github.com/Moesthetics-code/gestion_ecole.git"
+        DOCKER_REGISTRY = "https://hub.docker.com/u/moesthetic"
         NEXUS_URL = "http://nexus.your-company.com/repository/school_management/"
         SONARQUBE_URL = "http://sonarqube.your-company.com"
         SONAR_TOKEN = credentials('sonarqube-token')
         K8S_NAMESPACE = "school-namespace"
         HELM_RELEASE = "school-release"
-        DEPLOY_ENV = "dev"  
     }
 
     stages {

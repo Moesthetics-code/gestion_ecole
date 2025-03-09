@@ -19,6 +19,7 @@ CORS(app)
 
 # Configuration de la base de données
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Redington@db_cours:5432/cours_db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -71,6 +72,48 @@ def add_cours():
         logger.error(f"Erreur lors de l'ajout du cours {data.get('nom')}: {e}")
         db.session.rollback()
         return jsonify({"message": "Erreur lors de l'ajout"}), 500
+    
+    
+@app.route('/cours/<int:cours_id>', methods=['PUT'])
+def update_cours(cours_id):
+    data = request.get_json()
+    cours = Cours.query.get(cours_id)
+    
+    if not cours:
+        return jsonify({"message": "Cours non trouvé"}), 404
+
+    if 'nom' in data:
+        cours.nom = data['nom']
+    if 'classe_id' in data:
+        cours.classe_id = data['classe_id']
+    
+    try:
+        db.session.commit()
+        logger.info(f"Cours mis à jour : {cours.nom}")
+        return jsonify({"message": "Cours mis à jour"}), 200
+    except Exception as e:
+        logger.error(f"Erreur lors de la mise à jour du cours : {e}")
+        db.session.rollback()
+        return jsonify({"message": "Erreur lors de la mise à jour"}), 500
+
+
+@app.route('/cours/<int:cours_id>', methods=['DELETE'])
+def delete_cours(cours_id):
+    cours = Cours.query.get(cours_id)
+    
+    if not cours:
+        return jsonify({"message": "Cours non trouvé"}), 404
+
+    try:
+        db.session.delete(cours)
+        db.session.commit()
+        logger.info(f"Cours supprimé : {cours.nom}")
+        return jsonify({"message": "Cours supprimé"}), 200
+    except Exception as e:
+        logger.error(f"Erreur lors de la suppression du cours : {e}")
+        db.session.rollback()
+        return jsonify({"message": "Erreur lors de la suppression"}), 500
+
 
 # === Configuration de Swagger UI ===
 SWAGGER_URL = "/docs"

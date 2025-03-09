@@ -1,0 +1,7 @@
+{"timestamp": "2025-03-09 01:30:26", "level": "INFO", "service": "ClassesService", "message": "Liste des classes récupérée"}
+{"timestamp": "2025-03-09 01:30:26", "level": "INFO", "service": "ClassesService", "message": "Classe récupérée : Mathématiques (ID: 1)"}
+{"timestamp": "2025-03-09 01:30:26", "level": "INFO", "service": "ClassesService", "message": "Classe ajoutée : Informatique (Niveau: L2)"}
+{"timestamp": "2025-03-09 01:30:26", "level": "INFO", "service": "ClassesService", "message": "Classe supprimée : Informatique (ID: 1)"}
+{"timestamp": "2025-03-09 01:30:26", "level": "WARNING", "service": "ClassesService", "message": "Classe avec ID 1 non trouvée"}
+{"timestamp": "2025-03-09 01:30:26", "level": "WARNING", "service": "ClassesService", "message": "Tentative de suppression d'une classe inexistante (ID: 1)"}
+{"timestamp": "2025-03-09 01:30:26", "level": "WARNING", "service": "ClassesService", "message": "Classe avec ID 999 non trouvée"}

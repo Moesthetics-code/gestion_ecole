@@ -11,3 +11,4 @@ flask-inertia
 flask-cors
 flask_migrate
 requests-mock
+selenium

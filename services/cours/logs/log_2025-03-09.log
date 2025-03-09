@@ -1,0 +1,8 @@
+{"timestamp": "2025-03-09 01:23:49", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 01:23:49", "level": "INFO", "service": "CoursService", "message": "Cours ajouté : Mathématiques (Classe ID: 1)"}
+{"timestamp": "2025-03-09 01:23:49", "level": "WARNING", "service": "CoursService", "message": "Classe introuvable pour ID 99"}
+{"timestamp": "2025-03-09 01:26:28", "level": "INFO", "service": "CoursService", "message": "Liste des cours récupérée"}
+{"timestamp": "2025-03-09 01:26:28", "level": "INFO", "service": "CoursService", "message": "Cours ajouté : Mathématiques (Classe ID: 1)"}
+{"timestamp": "2025-03-09 01:26:28", "level": "WARNING", "service": "CoursService", "message": "Classe introuvable pour ID 99"}
+{"timestamp": "2025-03-09 01:26:28", "level": "INFO", "service": "CoursService", "message": "Cours mis à jour : Mathématiques Avancées"}
+{"timestamp": "2025-03-09 01:26:28", "level": "INFO", "service": "CoursService", "message": "Cours supprimé : Mathématiques"}

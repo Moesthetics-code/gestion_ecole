@@ -1,6 +1,6 @@
 import pytest
 import requests_mock
-from app import app, db, EmploiDuTemps
+from .app import app, db, EmploiDuTemps
 from datetime import datetime
 import os
 

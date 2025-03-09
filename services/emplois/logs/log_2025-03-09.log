@@ -1,0 +1,4 @@
+{"timestamp": "2025-03-09 01:49:59", "level": "INFO", "service": "EmploisDuTempsService", "message": "Emploi du temps ajouté : {'classe_id': 1, 'cours_id': 1, 'jour': 'Lundi', 'professeur_id': 1}"}
+{"timestamp": "2025-03-09 01:49:59", "level": "INFO", "service": "EmploisDuTempsService", "message": "Récupération de tous les emplois du temps."}
+{"timestamp": "2025-03-09 01:49:59", "level": "INFO", "service": "EmploisDuTempsService", "message": "Emploi du temps 1 mis à jour : {'jour': 'Mardi'}"}
+{"timestamp": "2025-03-09 01:49:59", "level": "INFO", "service": "EmploisDuTempsService", "message": "Emploi du temps 1 supprimé"}

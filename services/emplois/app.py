@@ -19,8 +19,8 @@ setup_logging()
 logger = logging.getLogger("EmploisDuTempsService")
 
 # Configuration de la base de données
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Redington@db_emplois:5432/emplois_db'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Redington@db_emplois:5432/emplois_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

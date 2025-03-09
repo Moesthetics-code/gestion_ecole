@@ -16,8 +16,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Configuration de la base de données
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Redington@db_classes:5432/classes_db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Redington@db_classes:5432/classes_db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

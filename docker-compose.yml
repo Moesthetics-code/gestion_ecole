@@ -46,7 +46,7 @@ services:
     networks:
       - school_network
     volumes:
-      - ./selenium:/app  # Optionnel, si vous avez des fichiers nécessaires pour Selenium
+      - ./services/tests:/app/tests  # Monté depuis services/tests vers /app/tests dans le conteneur
 
   db_classes:
     image: postgres:latest
